@@ -36,9 +36,15 @@ Player.prototype.update = function(dt) {
 
 };
 
+// Troubleshooted using https://discussions.udacity.com/t/opening-the-index-html-is-not-loading-the-game/26674/5
+
 Player.prototype.render = function() {
+    this.x = 200;
+    this.y = 375;
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
+
+
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
