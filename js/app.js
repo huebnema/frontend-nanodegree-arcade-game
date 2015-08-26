@@ -46,14 +46,16 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-
+// Reference:  https://discussions.udacity.com/t/allenemies-is-not-defined-console-log-error/22661/3
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-var enemy1 = new Enemy(100,100);
-var allEnemies = [enemy1];
+var enemy1 = new Enemy(50, 65);
+var enemy2 = new Enemy(85, 145);
+var enemy3 = new Enemy(25, 225);
+var allEnemies = [enemy1, enemy2, enemy3];
 var player = new Player(200, 375);
 
 // This listens for key presses and sends the keys to your
