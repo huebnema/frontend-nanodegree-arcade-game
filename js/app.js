@@ -1,5 +1,8 @@
 "use strict";
 
+// Awesome resource for making sprite-based games:  http://jlongster.com/Making-Sprite-based-Games-with-Canvas
+// Used to help with speed/animations
+
 // Enemies our player must avoid
 var Enemy = function(x, y) {
     // Variables applied to each of our instances go here,
@@ -18,6 +21,7 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    this._index += this.speed*dt;
 };
 
 // Draw the enemy on the screen, required method for game
