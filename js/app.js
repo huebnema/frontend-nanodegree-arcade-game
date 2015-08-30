@@ -57,10 +57,12 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+var playerSpeed = 100;
+
 // Reference:  https://discussions.udacity.com/t/allenemies-is-not-defined-console-log-error/22661/3
-Player.prototype.handleInput = function() {
+Player.prototype.handleInput = function(dt) {
     if(event.keyCode == 37) {
-        alert('Left was pressed');
+        this.x = this.x -100;
     }
 
 };
