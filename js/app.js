@@ -62,9 +62,17 @@ var playerSpeed = 100;
 // Reference:  https://discussions.udacity.com/t/allenemies-is-not-defined-console-log-error/22661/3
 Player.prototype.handleInput = function(dt) {
     if(event.keyCode == 37) {
-        this.x = this.x -100;
+        this.x = this.x - 75;
     }
-
+    if(event.keyCode == 38) {
+        this.y = this.y - 75;
+    }
+    if(event.keyCode == 39) {
+        this.x = this.x + 75;
+    }
+    if(event.keyCode == 40) {
+        this.y = this.y + 75;
+    }
 };
 
 // Now instantiate your objects.
