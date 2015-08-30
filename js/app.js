@@ -58,6 +58,12 @@ Player.prototype.render = function() {
 };
 
 // Reference:  https://discussions.udacity.com/t/allenemies-is-not-defined-console-log-error/22661/3
+Player.prototype.handleInput = function() {
+    if(event.keyCode == 37) {
+        alert('Left was pressed');
+    }
+
+};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
