@@ -47,6 +47,7 @@ var Player = function(x, y){
 
 };
 
+
 Player.prototype.update = function(dt) {
 
 };
@@ -57,7 +58,6 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-var playerSpeed = 100;
 
 // Reference:  https://discussions.udacity.com/t/allenemies-is-not-defined-console-log-error/22661/3
 Player.prototype.handleInput = function(dt) {
@@ -75,6 +75,8 @@ Player.prototype.handleInput = function(dt) {
     }
 };
 
+
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
@@ -83,7 +85,20 @@ var enemy1 = new Enemy(50, 65, 200);
 var enemy2 = new Enemy(85, 145, 50);
 var enemy3 = new Enemy(25, 225, 100);
 var allEnemies = [enemy1, enemy2, enemy3];
-var player = new Player(200, 375);
+var player = new Player(200, 370);
+
+// Check for collisions
+
+//var checkCollisions = function() {
+//    if (player.x < enemy1.x + enemy1.width &&
+//    player.x + player.width > enemy1.x &&
+//    player.y < player.y + enemy1.height &&
+//    player.height + player.y > enemy1.y) {
+
+//     alert("collision detected")// collision detected!
+
+// };
+
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -97,5 +112,9 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+
+
+
 
 
