@@ -3,6 +3,7 @@
 // Awesome resource for making sprite-based games:  http://jlongster.com/Making-Sprite-based-Games-with-Canvas
 // Used to help with speed/animations
 
+
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
     // Variables applied to each of our instances go here,
@@ -14,6 +15,9 @@ var Enemy = function(x, y, speed) {
     this.x = x;
     this.y = y;
     this.speed = speed;
+    this.w = 101;
+    this.h = 171;
+
 };
 
 // Update the enemy's position, required method for game
@@ -44,11 +48,15 @@ var Player = function(x, y){
     this.sprite = 'images/char-boy.png';
     this.x = x;
     this.y = y;
+    this.w = 101;
+    this.h = 171;
 
 };
 
 
 Player.prototype.update = function(dt) {
+
+    checkCollisions();
 
 };
 
@@ -58,6 +66,43 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+
+// Check for collisions
+// Troubleshooted using:  https://discussions.udacity.com/t/sure-i-would-love-some-collisioncheck-help/29801/4
+
+var checkCollisions = function() {
+
+//  Basic code for detecting collisions
+//     if (player.x < enemy1.x + enemy1.w &&
+//    player.x + player.w > enemy1.x &&
+//    player.y < enemy1.y + enemy1.h &&
+//    player.h + player.y > enemy1.y) {
+//     // collision detected!
+//     alert("collision");
+//     }
+
+// };
+
+//  More coplex code for looping through the allEnemies box
+
+    player.box = [player.x, player.y, player.w, player.h];
+
+
+    for(var i=0; i < allEnemies.length; i++) {
+
+        allEnemies[i].box = [allEnemies[i].x, allEnemies[i].y, allEnemies[i].w, allEnemies[i].h];
+
+            if (player.box[0] < allEnemies[i].box[0] + allEnemies[i].box[2] &&
+              player.box[0] + player.box[2] > allEnemies[i].box[0] &&
+              player.box[1] < allEnemies[i].box[1] + allEnemies[i].box[3] &&
+              player.box[3] + player.box[1]> allEnemies[i].box[1]) {
+                alert("collision")   // collision detected!
+            } else {
+                return false;
+            }
+
+        }
+ };
 
 // Reference:  https://discussions.udacity.com/t/allenemies-is-not-defined-console-log-error/22661/3
 Player.prototype.handleInput = function(dt) {
@@ -77,6 +122,7 @@ Player.prototype.handleInput = function(dt) {
 
 
 
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
@@ -87,17 +133,9 @@ var enemy3 = new Enemy(25, 225, 100);
 var allEnemies = [enemy1, enemy2, enemy3];
 var player = new Player(200, 370);
 
-// Check for collisions
 
-//var checkCollisions = function() {
-//    if (player.x < enemy1.x + enemy1.width &&
-//    player.x + player.width > enemy1.x &&
-//    player.y < player.y + enemy1.height &&
-//    player.height + player.y > enemy1.y) {
 
-//     alert("collision detected")// collision detected!
 
-// };
 
 
 // This listens for key presses and sends the keys to your
