@@ -78,6 +78,10 @@ Player.prototype.reset = function() {
 };
 
 // Don't let the player go outside the boundaries of the game board
+// Troubleshooted using:  http://stackoverflow.com/questions/22739060/creating-player-boundaries-in-javascript
+
+var rightBorder = 505 - 101;
+var bottomBorder = 540 - 107;
 
 var checkBoundaries = function() {
 
@@ -86,6 +90,12 @@ var checkBoundaries = function() {
     }
     if (player.x < 0) {
         player.x = 0;
+    }
+    if (player.x > rightBorder) {
+        player.x = rightBorder;
+    }
+    if (player.y > bottomBorder) {
+        player.y = bottomBorder;
     }
 }
 
