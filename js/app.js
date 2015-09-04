@@ -58,6 +58,7 @@ Player.prototype.update = function(dt) {
 
     checkCollisions();
     checkBoundaries();
+    checkSuccess();
 
 };
 
@@ -135,6 +136,14 @@ var checkCollisions = function() {
         }
  };
 
+
+var checkSuccess = function() {
+
+    if (player.y < 3) {
+        player.reset();
+    }
+
+}
 
 // Reference:  https://discussions.udacity.com/t/allenemies-is-not-defined-console-log-error/22661/3
 Player.prototype.handleInput = function(dt) {
