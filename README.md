@@ -1,6 +1,13 @@
 frontend-nanodegree-arcade-game
 ===============================
 
-Students should use this rubric: https://www.udacity.com/course/viewer#!/c-ud015/l-3072058665/m-3072588797
+Welcome to the frogger clone game!
 
-for self-checking their submission.
+To play:
+
+Use the arrow keys (up, down, left right) to move the player across the screen.
+
+The win:
+Guide your player to the water. Once you reach the water, your player will reset to the original position.
+
+Watch out! Don't hit any bugs while moving across the screen. If you do, your player will start over from the beginning.
