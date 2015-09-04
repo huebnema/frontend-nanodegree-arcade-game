@@ -57,6 +57,7 @@ var Player = function(x, y){
 Player.prototype.update = function(dt) {
 
     checkCollisions();
+    checkBoundaries();
 
 };
 
@@ -75,6 +76,20 @@ Player.prototype.reset = function() {
     this.y = 370;
 
 };
+
+// Don't let the player go outside the boundaries of the game board
+
+var checkBoundaries = function() {
+
+    if (player.y < 0) {
+        player.y = 0;
+    }
+    if (player.x < 0) {
+        player.x = 0;
+    }
+}
+
+
 
 var checkCollisions = function() {
 
@@ -110,6 +125,7 @@ var checkCollisions = function() {
         }
  };
 
+
 // Reference:  https://discussions.udacity.com/t/allenemies-is-not-defined-console-log-error/22661/3
 Player.prototype.handleInput = function(dt) {
     if(event.keyCode == 37) {
@@ -133,7 +149,7 @@ Player.prototype.handleInput = function(dt) {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-var enemy1 = new Enemy(50, 65, 200);
+var enemy1 = new Enemy(50, 65, 150);
 var enemy2 = new Enemy(85, 145, 50);
 var enemy3 = new Enemy(25, 225, 100);
 var allEnemies = [enemy1, enemy2, enemy3];
