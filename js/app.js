@@ -28,6 +28,7 @@ Enemy.prototype.update = function(dt) {
     if (this.x < 505) {
         this.x += this.speed * dt;
     } else {
+        //Deleting this stops the bugs from wrapping
         this.x = this.x = 0;
     };
 
@@ -54,8 +55,6 @@ var Player = function(x, y) {
 
 Player.prototype.update = function(dt) {
 
-    checkCollisions();
-    checkBoundaries();
     checkSuccess();
 
 };
@@ -79,10 +78,11 @@ Player.prototype.reset = function() {
 // Don't let the player go outside the boundaries of the game board
 // Troubleshooted using:  http://stackoverflow.com/questions/22739060/creating-player-boundaries-in-javascript
 
+
 var rightBorder = 505 - 101;
 var bottomBorder = 540 - 107;
 
-var checkBoundaries = function() {
+Player.prototype.checkBoundaries = function() {
 
     if (player.y < 0) {
         player.y = 0;
@@ -96,11 +96,10 @@ var checkBoundaries = function() {
     if (player.y > bottomBorder) {
         player.y = bottomBorder;
     }
-}
+};
 
 
-
-var checkCollisions = function() {
+Player.prototype.checkCollisions = function() {
 
     //  Basic code for detecting collisions
     //     if (player.x < enemy1.x + enemy1.w &&
