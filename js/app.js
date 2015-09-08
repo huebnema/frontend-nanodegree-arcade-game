@@ -28,9 +28,8 @@ Enemy.prototype.update = function(dt) {
     if (this.x < 505) {
         this.x += this.speed * dt;
     } else {
-        //Deleting this stops the bugs from wrapping
-        this.x = this.x = 0;
-    };
+        this.x = 0;
+    }
 
 };
 
@@ -79,10 +78,12 @@ Player.prototype.reset = function() {
 // Troubleshooted using:  http://stackoverflow.com/questions/22739060/creating-player-boundaries-in-javascript
 
 
-var rightBorder = 505 - 101;
-var bottomBorder = 540 - 107;
+
 
 Player.prototype.checkBoundaries = function() {
+
+    var rightBorder = 505 - 101;
+    var bottomBorder = 540 - 107;
 
     if (player.y < 0) {
         player.y = 0;
@@ -140,7 +141,7 @@ var checkSuccess = function() {
         player.reset();
     }
 
-}
+};
 
 // Reference:  https://discussions.udacity.com/t/allenemies-is-not-defined-console-log-error/22661/3
 Player.prototype.handleInput = function(dt) {
