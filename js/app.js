@@ -54,7 +54,9 @@ var Player = function(x, y) {
 
 Player.prototype.update = function(dt) {
 
-    checkSuccess();
+    Player.prototype.checkCollisions();
+    Player.prototype.checkBoundaries();
+    Player.prototype.checkSuccess();
 
 };
 
@@ -64,8 +66,6 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Check for collisions
-// Troubleshooted using:  https://discussions.udacity.com/t/sure-i-would-love-some-collisioncheck-help/29801/4
 
 Player.prototype.reset = function() {
 
@@ -100,6 +100,9 @@ Player.prototype.checkBoundaries = function() {
 };
 
 
+// Check for collisions
+// Troubleshooted using:  https://discussions.udacity.com/t/sure-i-would-love-some-collisioncheck-help/29801/4
+
 Player.prototype.checkCollisions = function() {
 
     //  Basic code for detecting collisions
@@ -127,6 +130,7 @@ Player.prototype.checkCollisions = function() {
             player.box[1] < allEnemies[i].box[1] + allEnemies[i].box[3] &&
             player.box[3] + player.box[1] > allEnemies[i].box[1]) {
             player.reset(); // collision detected!
+            break;
         } else {
             return false;
         }
@@ -135,7 +139,7 @@ Player.prototype.checkCollisions = function() {
 };
 
 
-var checkSuccess = function() {
+Player.prototype.checkSuccess = function() {
 
     if (player.y < 3) {
         player.reset();
