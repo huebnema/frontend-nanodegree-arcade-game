@@ -1,5 +1,3 @@
-"use strict";
-
 // Awesome resource for making sprite-based games:  http://jlongster.com/Making-Sprite-based-Games-with-Canvas
 // Used to help with speed/animations
 
@@ -11,6 +9,7 @@ var Enemy = function(x, y, speed) {
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
+    "use strict";
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
