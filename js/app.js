@@ -1,7 +1,6 @@
+
 // Awesome resource for making sprite-based games:  http://jlongster.com/Making-Sprite-based-Games-with-Canvas
 // Used to help with speed/animations
-
-
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
     // Variables applied to each of our instances go here,
@@ -28,7 +27,7 @@ Enemy.prototype.update = function(dt) {
 
     if (this.x < 505) {
         this.x += this.speed * dt;
-    }else{
+    } else {
         this.x = this.x = 0;
     };
 
@@ -42,7 +41,7 @@ Enemy.prototype.render = function() {
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
-var Player = function(x, y){
+var Player = function(x, y) {
 
     this.sprite = 'images/char-boy.png';
     this.x = x;
@@ -103,37 +102,37 @@ var checkBoundaries = function() {
 
 var checkCollisions = function() {
 
-//  Basic code for detecting collisions
-//     if (player.x < enemy1.x + enemy1.w &&
-//    player.x + player.w > enemy1.x &&
-//    player.y < enemy1.y + enemy1.h &&
-//    player.h + player.y > enemy1.y) {
-//     // collision detected!
-//     alert("collision");
-//     }
+    //  Basic code for detecting collisions
+    //     if (player.x < enemy1.x + enemy1.w &&
+    //    player.x + player.w > enemy1.x &&
+    //    player.y < enemy1.y + enemy1.h &&
+    //    player.h + player.y > enemy1.y) {
+    //     // collision detected!
+    //     alert("collision");
+    //     }
 
-// };
+    // };
 
-//  More coplex code for looping through the allEnemies box
+    //  More coplex code for looping through the allEnemies box
 
     player.box = [player.x, player.y, player.w, player.h];
 
 
-    for(var i=0; i < allEnemies.length; i++) {
+    for (var i = 0; i < allEnemies.length; i++) {
 
         allEnemies[i].box = [allEnemies[i].x, allEnemies[i].y, allEnemies[i].w, allEnemies[i].h];
 
-            if (player.box[0] < allEnemies[i].box[0] + allEnemies[i].box[2] &&
-              player.box[0] + player.box[2] > allEnemies[i].box[0] &&
-              player.box[1] < allEnemies[i].box[1] + allEnemies[i].box[3] &&
-              player.box[3] + player.box[1]> allEnemies[i].box[1]) {
-                player.reset();   // collision detected!
-            } else {
-                return false;
-            }
-
+        if (player.box[0] < allEnemies[i].box[0] + allEnemies[i].box[2] &&
+            player.box[0] + player.box[2] > allEnemies[i].box[0] &&
+            player.box[1] < allEnemies[i].box[1] + allEnemies[i].box[3] &&
+            player.box[3] + player.box[1] > allEnemies[i].box[1]) {
+            player.reset(); // collision detected!
+        } else {
+            return false;
         }
- };
+
+    }
+};
 
 
 var checkSuccess = function() {
@@ -146,16 +145,16 @@ var checkSuccess = function() {
 
 // Reference:  https://discussions.udacity.com/t/allenemies-is-not-defined-console-log-error/22661/3
 Player.prototype.handleInput = function(dt) {
-    if(event.keyCode == 37) {
+    if (event.keyCode == 37) {
         this.x = this.x - 75;
     }
-    if(event.keyCode == 38) {
+    if (event.keyCode == 38) {
         this.y = this.y - 75;
     }
-    if(event.keyCode == 39) {
+    if (event.keyCode == 39) {
         this.x = this.x + 75;
     }
-    if(event.keyCode == 40) {
+    if (event.keyCode == 40) {
         this.y = this.y + 75;
     }
 };
@@ -176,8 +175,6 @@ var player = new Player(200, 370);
 
 
 
-
-
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
@@ -190,9 +187,3 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
-
-
-
-
-
-
