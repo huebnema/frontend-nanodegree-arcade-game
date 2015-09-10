@@ -18,6 +18,9 @@ var Enemy = function(x, y, speed) {
 
 };
 
+var canvasWidth = 505;
+var canvasHeight = 540;
+
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
@@ -82,8 +85,8 @@ Player.prototype.reset = function() {
 
 Player.prototype.checkBoundaries = function() {
 
-    var rightBorder = 505 - 101;
-    var bottomBorder = 540 - 107;
+    var rightBorder = canvasWidth - 101;
+    var bottomBorder = canvasHeight - 107;
 
     if (player.y < 0) {
         player.y = 0;
