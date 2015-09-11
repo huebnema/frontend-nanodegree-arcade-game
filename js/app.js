@@ -121,24 +121,36 @@ Player.prototype.checkCollisions = function() {
 
     //  More coplex code for looping through the allEnemies box
 
-    player.box = [player.x, player.y, player.w, player.h];
+    // player.box = [player.x, player.y, player.w, player.h];
 
 
-    for (var i = 0; i < allEnemies.length; i++) {
+    // for (var i = 0; i < allEnemies.length; i++) {
 
-        allEnemies[i].box = [allEnemies[i].x, allEnemies[i].y, allEnemies[i].w, allEnemies[i].h];
+    //     allEnemies[i].box = [allEnemies[i].x, allEnemies[i].y, allEnemies[i].w, allEnemies[i].h];
 
-        if (player.box[0] < allEnemies[i].box[0] + allEnemies[i].box[2] &&
-            player.box[0] + player.box[2] > allEnemies[i].box[0] &&
-            player.box[1] < allEnemies[i].box[1] + allEnemies[i].box[3] &&
-            player.box[3] + player.box[1] > allEnemies[i].box[1]) {
-            player.reset(); // collision detected!
-            break;
-        } else {
-            return false;
+    //     if (player.box[0] < allEnemies[i].box[0] + allEnemies[i].box[2] &&
+    //         player.box[0] + player.box[2] > allEnemies[i].box[0] &&
+    //         player.box[1] < allEnemies[i].box[1] + allEnemies[i].box[3] &&
+    //         player.box[3] + player.box[1] > allEnemies[i].box[1]) {
+    //         player.reset(); // collision detected!
+    //         break;
+    //     } else {
+    //         return false;
+    //     }
+
+    // }
+
+    // Third time's a charm! Thanks to help from my Udacity reviewer.
+
+    var COLLISION_MARGIN = 75;
+    for (enemy in allEnemies) {
+        if ((Math.abs(allEnemies[enemy].y - player.y) < COLLISION_MARGIN) &&
+            (Math.abs(allEnemies[enemy].x - player.x) < COLLISION_MARGIN)) {
+            // crash
+            player.reset();
         }
-
     }
+
 };
 
 
