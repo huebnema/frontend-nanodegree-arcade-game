@@ -112,8 +112,8 @@ Player.prototype.checkBoundaries = function() {
 Player.prototype.checkCollisions = function() {
 
     for (enemy in allEnemies) {
-        if ((Math.abs(allEnemies[enemy].y - player.y) < COLLISION_MARGIN) &&
-            (Math.abs(allEnemies[enemy].x - player.x) < COLLISION_MARGIN)) {
+        if ((Math.abs(allEnemies[enemy].y - this.y) < COLLISION_MARGIN) &&
+            (Math.abs(allEnemies[enemy].x - this.x) < COLLISION_MARGIN)) {
             // crash
             this.reset();
         }
