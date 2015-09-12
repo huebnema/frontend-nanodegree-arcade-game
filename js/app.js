@@ -1,6 +1,11 @@
-
 // Awesome resource for making sprite-based games:  http://jlongster.com/Making-Sprite-based-Games-with-Canvas
 // Used to help with speed/animations
+
+// Constant declarations
+var COLLISION_MARGIN = 75,
+    TILE_WIDTH = 101,
+    TILE_HEIGHT = 83;
+
 // Enemies our player must avoid
 var Enemy = function(x, y, speed) {
     // Variables applied to each of our instances go here,
@@ -13,8 +18,6 @@ var Enemy = function(x, y, speed) {
     this.x = x;
     this.y = y;
     this.speed = speed;
-    this.w = 101;
-    this.h = 171;
 
 };
 
@@ -73,7 +76,7 @@ Player.prototype.render = function() {
 Player.prototype.reset = function() {
 
     this.x = 200;
-    this.y = 370;
+    this.y = 400;
 
 };
 
@@ -108,41 +111,6 @@ Player.prototype.checkBoundaries = function() {
 
 Player.prototype.checkCollisions = function() {
 
-    //  Basic code for detecting collisions
-    //     if (player.x < enemy1.x + enemy1.w &&
-    //    player.x + player.w > enemy1.x &&
-    //    player.y < enemy1.y + enemy1.h &&
-    //    player.h + player.y > enemy1.y) {
-    //     // collision detected!
-    //     alert("collision");
-    //     }
-
-    // };
-
-    //  More coplex code for looping through the allEnemies box
-
-    // player.box = [player.x, player.y, player.w, player.h];
-
-
-    // for (var i = 0; i < allEnemies.length; i++) {
-
-    //     allEnemies[i].box = [allEnemies[i].x, allEnemies[i].y, allEnemies[i].w, allEnemies[i].h];
-
-    //     if (player.box[0] < allEnemies[i].box[0] + allEnemies[i].box[2] &&
-    //         player.box[0] + player.box[2] > allEnemies[i].box[0] &&
-    //         player.box[1] < allEnemies[i].box[1] + allEnemies[i].box[3] &&
-    //         player.box[3] + player.box[1] > allEnemies[i].box[1]) {
-    //         player.reset(); // collision detected!
-    //         break;
-    //     } else {
-    //         return false;
-    //     }
-
-    // }
-
-    // Third time's a charm! Thanks to help from my Udacity reviewer.
-
-    var COLLISION_MARGIN = 75;
     for (enemy in allEnemies) {
         if ((Math.abs(allEnemies[enemy].y - player.y) < COLLISION_MARGIN) &&
             (Math.abs(allEnemies[enemy].x - player.x) < COLLISION_MARGIN)) {
@@ -165,16 +133,16 @@ Player.prototype.checkSuccess = function() {
 // Reference:  https://discussions.udacity.com/t/allenemies-is-not-defined-console-log-error/22661/3
 Player.prototype.handleInput = function(dt) {
     if (event.keyCode == 37) {
-        this.x = this.x - 101;
+        this.x = this.x - TILE_WIDTH;
     }
     if (event.keyCode == 38) {
-        this.y = this.y - 83;
+        this.y = this.y - TILE_HEIGHT;
     }
     if (event.keyCode == 39) {
-        this.x = this.x + 101;
+        this.x = this.x + TILE_WIDTH;
     }
     if (event.keyCode == 40) {
-        this.y = this.y + 83;
+        this.y = this.y + TILE_HEIGHT;
     }
 };
 
@@ -189,7 +157,7 @@ var enemy1 = new Enemy(50, 65, 150);
 var enemy2 = new Enemy(85, 145, 50);
 var enemy3 = new Enemy(25, 225, 100);
 var allEnemies = [enemy1, enemy2, enemy3];
-var player = new Player(200, 370);
+var player = new Player(200, 400);
 
 
 
