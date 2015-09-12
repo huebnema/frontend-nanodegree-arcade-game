@@ -60,9 +60,9 @@ var Player = function(x, y) {
 
 Player.prototype.update = function(dt) {
 
-    Player.prototype.checkCollisions();
-    Player.prototype.checkBoundaries();
-    Player.prototype.checkSuccess();
+    this.checkCollisions();
+    this.checkBoundaries();
+    this.checkSuccess();
 
 };
 
@@ -88,20 +88,20 @@ Player.prototype.reset = function() {
 
 Player.prototype.checkBoundaries = function() {
 
-    var rightBorder = canvasWidth - player.w;
-    var bottomBorder = canvasHeight - player.h;
+    var rightBorder = canvasWidth - this.w;
+    var bottomBorder = canvasHeight - this.h;
 
-    if (player.y < 0) {
-        player.y = 0;
+    if (this.y < 0) {
+        this.y = 0;
     }
-    if (player.x < 0) {
-        player.x = 0;
+    if (this.x < 0) {
+        this.x = 0;
     }
-    if (player.x > rightBorder) {
-        player.x = rightBorder;
+    if (this.x > rightBorder) {
+        this.x = rightBorder;
     }
-    if (player.y > bottomBorder) {
-        player.y = bottomBorder;
+    if (this.y > bottomBorder) {
+        this.y = bottomBorder;
     }
 };
 
@@ -115,7 +115,7 @@ Player.prototype.checkCollisions = function() {
         if ((Math.abs(allEnemies[enemy].y - player.y) < COLLISION_MARGIN) &&
             (Math.abs(allEnemies[enemy].x - player.x) < COLLISION_MARGIN)) {
             // crash
-            player.reset();
+            this.reset();
         }
     }
 
@@ -124,8 +124,8 @@ Player.prototype.checkCollisions = function() {
 
 Player.prototype.checkSuccess = function() {
 
-    if (player.y < 3) {
-        player.reset();
+    if (this.y < 3) {
+        this.reset();
     }
 
 };
